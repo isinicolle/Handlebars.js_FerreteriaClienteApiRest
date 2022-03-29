@@ -1,8 +1,10 @@
-/*const { Router } = require('express');
-const controladorInicio = require('../controladores/controladorInicio');
+const { Router } = require('express');
+const {render} = require('express/lib/response');
 const router = Router();
 
 //trabajando con rutas
-router.get('/', controladorInicio.Raiz);
+router.get('/', (req,res) => {
+    res.render('home');
+});
 
-module.exports=router; */
+module.exports=router; 

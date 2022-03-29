@@ -2,6 +2,7 @@ const { application } = require('express');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const {engine} = require('express-handlebars');
 
 const rutaDepartamento = require('./rutas/rutaDepartamento');
 const rutaProveedor = require('./rutas/rutaProveedores');
@@ -15,6 +16,9 @@ app.use('/producto/img', express.static(path.join(__dirname, 'public/img')));
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
+app.engine('handlebars', engine());
+app.set('view engine', 'handlebars');
+app.set('views', './src/views');
 
 app.set('json spaces',2);
 
