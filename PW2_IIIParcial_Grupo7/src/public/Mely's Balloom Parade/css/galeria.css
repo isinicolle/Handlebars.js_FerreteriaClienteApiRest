@@ -1,0 +1,125 @@
+.gallery{
+    margin: 0 auto;
+    margin-bottom: 35px;
+    padding: 0 30px;
+}
+.main__title{
+    text-align: center;
+}
+.group__img__big{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: auto;
+    padding: 5px 0;
+    border-radius: 10%;
+    transition: all 1s;
+}
+.group__img__small{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: auto;
+    padding: 5px 0px;
+    border-radius: 10%;
+    transition: all 1s;
+}
+.modal{
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    z-index: 3000;
+    display: none;
+    cursor: default;
+}
+.modal__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.modal__img{
+    width: 50%;
+    height: 90vh;
+    object-fit: contain;
+}
+.modal__btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    padding: 8px 15px;
+    background: crimson;
+    font-size: 1.6em;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+}
+.modal__open{
+    display: block;
+}
+@media screen and (min-width:375px){
+    .main__title{
+        font-size:  1.6em;
+    }
+    .group__img__big{
+        width: 250px;
+        height: 250px;
+    }
+    .group__img__small{
+        width: 250px;
+        height: 250px;
+    }
+}
+@media screen and (min-width:425px){
+    .main__title{
+        font-size:  1.8em;
+    }
+    .group__img__big{
+        width: 275px;
+        height: 275px;
+    }
+    .group__img__small{
+        width: 275px;
+        height: 275px;
+    }
+}
+@media screen and (min-width:480px){
+    .group__img__big{
+        width: 95%;
+        height: 200px;
+        border-radius: 0;
+    }
+    .group__img__small{
+        width: 95%;
+        height: 150px;
+        border-radius: 0;
+    }
+    .column--50--25{
+        width: 25%;
+    }
+    .group__img__big:hover,.group__img__small:hover{
+        transform: scale(1.04);
+    }
+}
+@media screen and (min-width:768px){
+    .group__img__big{
+        width: 95%;
+        height: 250px;
+    }
+    .group__img__small{
+        width: 95%;
+        height: 200px;
+    }
+}
+@media screen and (min-width:1024px){
+    .group__img__big{
+        width: 95%;
+        height: 300px;
+    }
+    .group__img__small{
+        width: 95%;
+        height: 250px;
+    }
+}
