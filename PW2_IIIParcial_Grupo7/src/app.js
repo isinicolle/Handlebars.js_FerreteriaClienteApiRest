@@ -1,8 +1,7 @@
-const { application } = require('express');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const {engine} = require('express-handlebars');
+const { engine } = require('express-handlebars');
 
 const rutaDepartamento = require('./rutas/rutaDepartamento');
 const rutaProveedor = require('./rutas/rutaProveedores');
@@ -16,13 +15,16 @@ app.use('/producto/img', express.static(path.join(__dirname, 'public/img')));
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.set('views', './src/views');
 
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.set('json spaces',2);
 
-//app.use('/api/', rutas);
+app.use('/api/', require('./rutas/index'));
 app.use('/api/proveedores/',rutaProveedor);
 app.use('/api/departamentos/',rutaDepartamento);
 app.use('/api/compra/',rutaCompra);
