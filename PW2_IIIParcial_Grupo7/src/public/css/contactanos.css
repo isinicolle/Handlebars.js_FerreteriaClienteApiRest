@@ -30,13 +30,13 @@
     color: white;
 }
 .group__contact .social-icons [class*="icon-"]:hover{
-    background:rgb(249,30,154);
+    background: rgb(197, 51, 71);
     color: white;
 }
 .group__contact .group__information{
     margin: 10px;
     padding-bottom: 20px;
-    border-bottom: 5px solid rgb(249,30,154);
+    border-bottom: 5px solid  rgb(197, 51, 71);
 }
 .form{
     padding: 0 20px 10px;
@@ -103,7 +103,7 @@
         padding: 5px 10px;
         border-bottom: none;
         height: 400px;
-        border-right: 5px solid rgb(249,30,154);
+        border-right: 5px solid rgb(197, 51, 71);
     }
     .column__btn{
         margin-top: 20px;

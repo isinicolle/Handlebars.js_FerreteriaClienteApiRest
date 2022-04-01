@@ -48,12 +48,12 @@ h1,h2,h3,h4,h5,h6{
 .logo{
     font-family: 'Pacifico',cursive;
     font-weight: 100;
-    color: rgb(249,30,154);
+    color: rgb(197, 51, 71);
     padding: 10px;
     font-size: 1.35em;
 }
 .main-header__contactInfo{
-    background:rgb(249,30,154);
+    background: rgb(197, 51, 71);
     color:white;
     margin: 0 auto;
     font-size: .70em;
@@ -101,7 +101,7 @@ h1,h2,h3,h4,h5,h6{
     margin-left: 10px;
 }
 .social-icon__link span:hover{
-    color:rgb(249,30,154);
+    color: rgb(197, 51, 71);
 }
 .social-icon__link{
     text-decoration: none;
@@ -122,17 +122,17 @@ h1,h2,h3,h4,h5,h6{
 }
 .menu__link{
     display: block;
-    color: rgb(249,30,154);
+    color:  rgb(197, 51, 71);
     padding: 10px;
     text-decoration: none;
     font-size: .8em;
 }
 .menu__link:hover{
-    background: rgb(249,30,154);
+    background: rgb(197, 51, 71);
     color: white;
 }
 .menu__link--select{
-    background: rgb(249,30,154);
+    background:  rgb(197, 51, 71);
     color: white;
 }
 .mostrar{
@@ -148,7 +148,7 @@ h1,h2,h3,h4,h5,h6{
     width: 100%;
     height: 100%;
     position: absolute;
-    background: rgba(249,30,154,.25);
+    background: rgba(243, 212, 33, 0.151);
     z-index: 1000;
     top: 0;
 }
@@ -171,7 +171,7 @@ h1,h2,h3,h4,h5,h6{
 }
 /*---------------------Estilos del cotenido------------------------*/
 .group__color .container{
-    background: rgb(249,30,154);
+    background:  rgb(197, 51, 71);
     color: white;
     padding: 10px;
     text-align: center;
@@ -204,7 +204,7 @@ h1,h2,h3,h4,h5,h6{
     padding: 20px;
 }
 .column__btn{
-    background: rgb(249,30,154);
+    background: rgb(197, 51, 71);
     color:white;
     padding:10px;
     margin: 20px auto;
@@ -216,7 +216,7 @@ h1,h2,h3,h4,h5,h6{
     text-align: center;
 }
 .column__btn:hover{
-    background: rgba(249,30,154,0.80);
+    background: rgba(243, 212, 33, 0.562);
 }
 .column__btn:focus{
     background: rgba(255e2ws,36,155);
@@ -227,7 +227,7 @@ h1,h2,h3,h4,h5,h6{
     text-align: center;
     margin: 10px auto 30px;
     font-family: 'Pacifico',cursive;
-    color: rgb(249,30,154);
+    color: rgb(197, 51, 71);
 }
 .decorations{
     text-align: center;
@@ -246,7 +246,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .decoration__txt{
     font-size: 1.2em;
-    color: rgb(249,30,154);
+    color: rgb(197, 51, 71);
     font-weight: bold ;
     margin-bottom: 15px;
     padding-bottom: 15px;
@@ -254,7 +254,7 @@ h1,h2,h3,h4,h5,h6{
 /*---------------------Estilos del footer------------------------*/
 .main-footer{
     color: white;
-    background: rgb(249,30,154);
+    background:  rgb(197, 51, 71);
     font-size: .82em;
     padding: 20px;
 }
@@ -329,7 +329,7 @@ h1,h2,h3,h4,h5,h6{
         text-align: right;
     }
     .main-nav{
-        background: rgba(249,30,154,.9);
+        background: rgba(243, 212, 33, 0.438);
         color: white;
         padding: 8px;
     }
@@ -519,11 +519,11 @@ h1,h2,h3,h4,h5,h6{
         background: rgba(255,255,255,.9);
     }
     .menu__link{
-        color: rgb(249,30,154);
+        color:  rgb(197, 51, 71);
         padding: 25px;
     }
     .menu__link--select{
-        background: rgb(249,30,154);
+        background:  rgb(197, 51, 71);
         color:white;
     }
     .social-icons [class*='icon-']{
