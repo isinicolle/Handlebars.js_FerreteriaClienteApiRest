@@ -18,4 +18,13 @@ router.get('/contactanos', (req,res)=>{
     res.render('contactanos');
 });
 
+router.get('/iniciarsesion', (req,res)=>{
+    res.render('iniciarsesion');
+});
+
+router.get('/crearcuenta', (req,res)=>{
+    res.render('crearcuenta');
+});
+
+
 module.exports=router; 
