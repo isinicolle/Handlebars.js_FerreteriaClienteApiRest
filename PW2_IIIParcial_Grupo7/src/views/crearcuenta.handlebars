@@ -46,127 +46,67 @@
         <main class="main">
       <form id="formulario-productos" >
                     <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Codigo: </label>
+                        <label class="col-lg-2 col-form-label form-control-label">Nombre de Empleado: </label>
                             <div class="col-lg-9">
-                                <input id="id" class="form-control" type="text" placeholder="Escriba el codigo del producto" maxlength="10" required>
+                                <input id="id" class="form-control" type="text" placeholder="Escriba el Nombre de Empleado" maxlength="40" required>
                             </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Codigo de Barras: </label>
+                        <label class="col-lg-2 col-form-label form-control-label">Apellido de Empleado: </label>
                              <div class="col-lg-9">
-                                 <input id="idbarra" class="form-control" type="text" placeholder="Escriba el codigo de barra" maxlength="20" required>
+                                 <input id="idbarra" class="form-control" type="text" placeholder="Escriba Apellido de Empleado" maxlength="30" required>
                             </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Codigo de Catalogo: </label>
+                        <label class="col-lg-2 col-form-label form-control-label">Telefono: </label>
                             <div class="col-lg-9">
-                                <input id="idcatalogo" class="form-control" type="text"  placeholder="Escriba el codigo de catalogo" maxlength="10" required>
+                                <input id="idcatalogo" class="form-control" type="text"  placeholder="Escriba el Telefono" maxlength="12" required>
                             </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Nombre de producto: </label>
+                        <label class="col-lg-2 col-form-label form-control-label">Direccion del empleado: </label>
                             <div class="col-lg-9">
-                                    <input id="nombre" class="form-control" type="text" placeholder="Escriba el nombre del producto" maxlength="50" required>
+                                 <textarea required class="form-control" name="descripcion" id="descripcion" placeholder="Escriba el Direccion del empleado" maxlength="50"></textarea>
+                                      </textarea>
                             </div>
+                    </div><div class="form-group row">
+                            <label class="col-lg-2 col-form-label form-control-label">Ciudad: </label>
+                                <div class="col-lg-9">
+                                    <select class="custom-select" required>
+                                        <option selected disabled value="">Seleccione una Opcion</option>
+                                        <option value="1">Tegucigalpa</option>
+                                        <option value="2">San pedro Sula</option>
+                                        <option value="3">La ceiba</option>
+                                    </select>
+                                </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-2  col-form-label form-control-label">Descripcion del producto: </label>
+                        <label class="col-lg-2  col-form-label form-control-label">Fecha Nacimiento: </label>
                             <div class="col-lg-9">
-                             <textarea required class="form-control" name="descripcion" id="descripcion" placeholder="Escriba la descripcion del producto" maxlength="150">
+                             <input id="nombre" class="form-control" type="text" placeholder="Escriba la Fecha Nacimiento" maxlength="50" required>
 
-                            </textarea>
+                         
                             </div>
                     </div>
                     <div class="form-group row">
-                     <label class="col-lg-2 col-form-label form-control-label">Costo del producto: </label>
+                     <label class="col-lg-2 col-form-label form-control-label">Nombre de usuario: </label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="number" step="any" min="1" placeholder="Escriba el costo de este producto" required>
+                            <input class="form-control" type="number" step="any" min="1" placeholder="Escriba el Nombre de usuario" required>
                     </div>
                     </div>
                     <div class="form-group row">
-                    <label class="col-lg-2 col-form-label form-control-label">Precio del producto: </label>
+                    <label class="col-lg-2 col-form-label form-control-label">Clave: </label>
                         <div class="col-lg-9">
-                                 <input class="form-control" type="number" step="any" min="1" placeholder="Escriba el precio de este producto" required>
+                                 <input class="form-control" type="password" step="any" min="1" placeholder="Escriba su clave" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Existencia del producto: </label>
+                        <label class="col-lg-2 col-form-label form-control-label">Correo de empleado: </label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="number" min="1" placeholder="Escriba la cantidad de existencia del producto" required>
+                            <input class="form-control" type="number" min="1" placeholder="Escriba el Correo de empleado" required>
                         </div>
                     </div>                              
-                    <div class="form-group row">
-                        <label class="col-lg-2 col-form-label form-control-label">Existencia Minima del Producto: </label>
-                                <div class="col-lg-9">
-                                     <input class="form-control" type="number" min="1" placeholder="Escriba la cantidad de existencia minima del producto" required>
-                                </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-lg-2 col-form-label form-control-label">Imagen: </label>
-                                <div class="col-lg-9">
-                                    <input type="file" accept="Image"/> 
-                            </div>
-                    </div>
-                    <div class="form-group row">
-                            <label class="col-lg-2 col-form-label form-control-label">Impuesto: </label>
-                                <div class="col-lg-9">
-                                    <select class="custom-select" required>
-                                        <option selected disabled value="">Seleccione una Opcion</option>
-                                        <option value="1">Sin ISV</option>
-                                        <option value="2">15%</option>
-                                        <option value="3">21%</option>
-                                    </select>
-                                </div>
-                    </div>
-                        <div class="form-group row">
-                                <label class="col-lg-2 col-form-label form-control-label">Tipo: </label>
-                                <div class="col-lg-9">
-                                    <select class="custom-select" required>
-                                    <option selected disabled value="">Seleccione una Opcion</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-2 col-form-label form-control-label">Laboratorio: </label>
-                                <div class="col-lg-9">
-                                    <select class="custom-select" required>
-                                        <option selected disabled value="">Seleccione una Opcion</option>
-                                        <option value="1">Lab #1</option>
-                                        <option value="2">Lab #2</option>
-                                        <option value="3">Lab #3</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div class="form-group row">
-                                <label class="col-lg-2 col-form-label form-control-label">Estado: </label>
-                                    <div class="col-lg-9">
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="activo" name="customRadioInline" class="custom-control-input" required>
-                                        <label class="custom-control-label" for="activo">Activo</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="inactivo" name="customRadioInline" class="custom-control-input" required>
-                                        <label class="custom-control-label" for="inactivo">Inactivo</label>
-                                </div>
-                        </div>
-                                <br><br>
-                        <div class="form-group row">
-                            <label class="col-lg-2 col-form-label form-control-label">Producto: </label>
-                                <div class="col-lg-7">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                    <label class="form-check-label" for="inlineCheckbox2">Exento</label>
-                                </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-12 text-center">
-                                <br><br>
-                                <button class="btn btn-secondary" type="reset">Cancelar</button>
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </div>
+                   
         </form>
         </main>
 
