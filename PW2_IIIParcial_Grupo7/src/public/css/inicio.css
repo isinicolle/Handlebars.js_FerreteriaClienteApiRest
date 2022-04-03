@@ -248,8 +248,21 @@ h1,h2,h3,h4,h5,h6{
     font-size: 1.2em;
     color: rgb(197, 51, 71);
     font-weight: bold ;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.btn_agregar{
+    background-color: rgb(197, 51, 71);
+    width: 70px;
+    height: 35px;
+    color: white;
+    font-size: 10px;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    border: none;
+}
+.btn_agregar:active{
+    background: rgb(180, 51, 71);
 }
 /*---------------------Estilos del footer------------------------*/
 .main-footer{
@@ -555,7 +568,7 @@ h1,h2,h3,h4,h5,h6{
         margin: 0 auto 25px;
     }
     .decoration__img{
-        height: 250px;
+        height: 200px;
     }
     .decoration__title{
         font-size: 1.3em;
