@@ -8,6 +8,7 @@ const ModeloUsuario = prisma.usuariosClientes;
 const msj = require('../configuraciones/mensaje');
 const joi = require("@hapi/joi");
 const { text } = require('express');
+const id_clientee = "";
 
 const validar = joi.object({
     nombre_usuario: joi.string().min(2).required(),
@@ -367,3 +368,21 @@ exports.actualizarClave= async (req,res) =>{
    
    
 }
+
+
+exports.id = async (req,res,next) =>{
+    try {
+        id_clientee = await prisma.clientes.findFirst({
+            orderBy :
+            {
+                id_empleado: 'desc',
+            },
+      
+        });
+     
+        res.json( id_clientee);
+    } catch (error) {
+        console.log(error)
+        next(error);
+    }
+};

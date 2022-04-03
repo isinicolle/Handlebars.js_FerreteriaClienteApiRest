@@ -77,27 +77,29 @@ exports.buscarCliente = async (req,res,next) =>{
 
 //insertar cliente
 exports.insertarcliente = async (req,res,next) =>{
-
-    const result = await validar.validate(req.body);
-    if(result.error)
-    {
-        res.json("ERROR! Verifique que los datos a ingresar tienen el formato correcto");
-
-    
-        
-    }
-    else
-    {
+    const {nom_cliente,apellido_cliente, RTN , DNI_Cliente , tel_cliente,direccion_cliente} = req.body;
+   
+  
         try {
             const clientes = await prisma.clientes.create({
-                data: req.body,
+                data: 
+                {
+                    nom_cliente: nom_cliente,
+                    apellido_cliente: apellido_cliente,
+                    RTN: RTN,
+                    DNI_Cliente: DNI_Cliente,
+                    tel_cliente: tel_cliente,
+                    direccion_cliente: direccion_cliente,
+                    id_ciudad:  Number(5),
+                    estado: true,
+                }
             })
             res.json(clientes);
         } catch (error) {
             console.log(error)
             next(error);
         }
-    }
+    
     
 }
 
