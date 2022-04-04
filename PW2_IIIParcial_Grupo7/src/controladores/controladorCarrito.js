@@ -11,12 +11,12 @@ const modeloUsuario = prisma.usuariosClientes
 
 exports.MostrarCarrito= async (req,res,next)=>{
     let {idUsuario} = req.query;
-    console.log(idUsuario);
+    /*console.log(idUsuario);
     if (!idUsuario || idUsuario==undefined){
     mensaje('Error al iniciar sesion',200,idUsuario,res);
     next(mensaje);
     }else
-    {
+    {*/
         idUsuario = parseInt(idUsuario);
     let Carrito = await modeloCarrito.findFirst({
         where:{id_usuarioCliente:idUsuario},
@@ -28,7 +28,7 @@ exports.MostrarCarrito= async (req,res,next)=>{
     Carrito = await calcularPrecio(Carrito);
     res.json(Carrito); 
 
-} 
+//} 
 };  
 
 exports.nuevoCarrito= async(req,res)=>{
@@ -131,4 +131,16 @@ exports.modificarCarrito = async(req,res)=>{
                 Carrito.totalCarrito=suma;
                 return Carrito;
             }
+}
+
+exports.eliminarProducto = async (req,res,next) =>{
+    try {
+        const itemId = parseInt(req.params.id);
+        const items =  await modeloItemCarrito.delete({
+            where:{id_itemCarrito:itemId}
+        });
+        res.send(items);
+    } catch (error) {
+        next(error);
     }
+}

@@ -1,7 +1,8 @@
-        <head>
-            <link href="../css/contactanos.css" rel="stylesheet">
-        </head>
+
         
+        <head>
+              <link href="../css/carrito.css" rel="stylesheet">
+        </head>
         <header class="main-header">
             <div class="container container--flex">
                 <div class="container__logo column column--50">
@@ -15,7 +16,7 @@
         </header>
 
         <nav class="main-nav">
-            <div class="container container--flex">
+                <div class="container container--flex">
                 <span class="icon-menu" id="btnmenu"></span>
                 <ul class="menu" id="menu">
                     <li class="menu__item"><a href="/api" class="menu__link">Inicio</a></li>
@@ -39,40 +40,27 @@
         </section>
 
         <main class="main">
-            <div class="group group__contact">
-                <h2 class="main__title">Contáctenos</h2>
+            <section class="group group_cart">
+                <h2 class="main__title">Carrito de compra</h2>
                 <div class="container container--flex">
-                    <div class="group__information column column--50">
-                        <h3 class="group__title">Información</h3>
-                        <p class="group__txt information">
+                    <div class="group_table column column--50">
+                        <table class="table">
+                            <thead>
+                                <tr>                    
+                                    <th class="columns">Producto</th>
+                                    <th class="columns">Nombre</th>
+                                    <th class="columns">Precio</th>
+                                    <th class="columns">Descuento</th>
+                                    <th class="columns">Cantidad</th>                         
+                                </tr>
+                            </thead>
+                            <tbody id="dato">
                             
-                            Ferretear...Siempre precios bajos. Con fe en las futuras contrucciones 
-                            que nuestros clientes van a realizar con mucha calidad.
-                   
-                        </p>
-                        <p class="group__txt"><span class="icon-telephone"></span>+504 9999-9999</p>
-                        <p class="group__txt"><span class="icon-map"></span>UNICAH</p>
-                        <p class="group__txt"><span class="icon-mail"></span>ferreteriaferretear.@gmail.com</p>
-                        <div class="social-icons">
-                            <a href="https://www.facebook.com" class="social-icon__link"><span class="icon-facebook"></span></a>
-                            <a href="https://www.instagram.com" class="social-icon__link"><span class="icon-instagram"></span></a>
-                            <a href="https://twitter.com/i/flow/login" class="social-icon__link"><span class="icon-twitter"></span></a>
-                            <a href="https://mail.google.com" class="social-icon__link"><span class="icon-mail"></span></a>
-                        </div>
+                            </tbody> 
+                      </table>
                     </div>
-                    <form action="" method="post" class="form column column--50">
-                        <label for="" class="form__label">Nombre:</label>
-                        <input type="text" class="form__input" name="nombre">
-                        <label for="" class="form__label">Correo:</label>
-                        <input type="email" class="form__input" name="correo">
-                        <label for="" class="form__label">Teléfono:</label>
-                        <input type="number" class="form__input" name="telefono">
-                        <label for="" class="form__label">Mensaje:</label>
-                        <textarea class="form__textarea" name="descripcion" cols="30" rows="10"></textarea>
-                        <input type="submit" type="reset" value="Enviar" class="column__btn">
-                    </form>
                 </div>
-            </div>
+            </section>
         </main>
 
         <footer class="main-footer">
@@ -102,3 +90,4 @@
         </footer>
 
         <script src="../js/menu.js"></script>
+        <script src="../js/carrito.js"></script>

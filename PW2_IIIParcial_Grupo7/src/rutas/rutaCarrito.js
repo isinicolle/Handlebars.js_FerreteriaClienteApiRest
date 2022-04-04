@@ -7,4 +7,5 @@ router.get('/carritoCliente', controladorCarrito.MostrarCarrito);
 router.post('/nuevoCarrito', controladorCarrito.nuevoCarrito);
 router.post('/agregarProducto', controladorCarrito.agregarProducto);
 router.put('/modificarProducto', controladorCarrito.modificarCarrito); 
+router.delete('/eliminarProducto/:id', controladorCarrito.eliminarProducto);
 module.exports=router; 

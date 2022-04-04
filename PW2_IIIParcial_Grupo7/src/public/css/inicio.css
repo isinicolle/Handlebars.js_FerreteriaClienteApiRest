@@ -135,6 +135,10 @@ h1,h2,h3,h4,h5,h6{
     background:  rgb(197, 51, 71);
     color: white;
 }
+#carrito{
+    text-decoration: none;
+    
+}
 .mostrar{
     height: 141px;
 }
@@ -257,7 +261,7 @@ h1,h2,h3,h4,h5,h6{
     height: 35px;
     color: white;
     font-size: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: 7px;
     border: none;
 }
@@ -568,7 +572,7 @@ h1,h2,h3,h4,h5,h6{
         margin: 0 auto 25px;
     }
     .decoration__img{
-        height: 200px;
+        height: 250px;
     }
     .decoration__title{
         font-size: 1.3em;

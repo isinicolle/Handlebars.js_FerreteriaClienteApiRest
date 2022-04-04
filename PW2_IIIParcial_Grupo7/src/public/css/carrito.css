@@ -1,0 +1,41 @@
+.main__title{
+    text-align: center;
+    font-size: 1.8em;
+}
+.group_table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    text-align: center;
+}
+.table{
+    padding: 30px;
+}
+.columns{
+    padding: 10px 55px;
+    font-size: 22px;
+}
+.row{
+    padding: 20px 20px;
+}
+.icon-plus{
+    color: #777;
+    margin: 0 20px;
+    font-size: 24px;
+}
+.icon-minus{
+    color: #777;
+    margin: 0 20px;
+    font-size: 24px;
+}
+.icon-cancel{
+    color: #777;
+    margin: 0 20px;
+    font-size: 24px;
+}
+.rows{
+    font-size: 24px;
+    padding: 0 10px;
+    
+}

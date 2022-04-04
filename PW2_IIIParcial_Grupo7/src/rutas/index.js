@@ -20,4 +20,8 @@ router.get('/contactanos', (req,res)=>{
     res.render('contactanos');
 });
 
+router.get('/carrito', (req,res)=>{
+    res.render('carrito');
+});
+
 module.exports=router; 
