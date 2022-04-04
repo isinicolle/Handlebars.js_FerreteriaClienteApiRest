@@ -122,12 +122,19 @@ exports.insertarUsuariocliente = async (req,res,next) =>{
     const {nombre_usuario,contraenia_usuario, correo_usuario}= req.body;
     const passwordHash = await bcrypt.hash(contraenia_usuario,12);
 
+       const id_cliente = await prisma.clientes.findFirst({
+            orderBy :
+            {
+                id_cliente: 'desc',
+            },
+      
+        });
         await prisma.usuariosClientes.create({
           data:{ 
             nombre_usuario: nombre_usuario,
             contraenia_usuario: passwordHash,
             correo_usuario: correo_usuario,
-            Clientes:{connect:{id_cliente: Number(7)}},
+           id_cliente:Number(id_cliente.id_cliente),
             estado:true
         },
         })
@@ -138,7 +145,7 @@ exports.insertarUsuariocliente = async (req,res,next) =>{
           })
           .catch((err) => {
             console.log(err);
-            res.send("datos");
+            res.send(err);
           });
 }
 

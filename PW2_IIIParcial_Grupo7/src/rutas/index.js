@@ -29,5 +29,10 @@ router.get('/crearcuenta', (req,res)=>{
     res.render('crearcuenta', {titulo});
 });
 
+router.get('/crearcuenta2', (req,res)=>{
+    titulo = "Crea tu nueva cuenta"
+    res.render('crearcuenta2', {titulo});
+});
+
 
 module.exports=router; 
