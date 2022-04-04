@@ -99,7 +99,7 @@ exports.insertarcliente = async (req,res,next) =>{
             console.log(error)
             next(error);
         }
-    
+        res.render('crearcuenta2');
     
 }
 
