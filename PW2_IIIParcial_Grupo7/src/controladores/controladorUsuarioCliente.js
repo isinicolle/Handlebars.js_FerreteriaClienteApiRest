@@ -131,21 +131,17 @@ exports.insertarUsuariocliente = async (req,res,next) =>{
             },
       
         });
+
         const usuariocliente = await prisma.usuariosClientes.create({
           data:{ 
             nombre_usuario: nombre_usuario,
             contraenia_usuario: contraenia_usuario,
             correo_usuario: correo_usuario,
-           id_cliente:Number(id_cliente.id_cliente),
+           Clientes:{connect:{id_cliente: Number(id_cliente.id_cliente)}},
             estado:true
         },
         })
-        .then((data) => {
-            console.log(data);
-            emailer.sendMail(usuariocliente.correo_usuario);
-            res.send(data);
-          });
-          res.json(usuariocliente);
+        res.json(usuariocliente);
     }
     catch(err){
         console.log(err)
