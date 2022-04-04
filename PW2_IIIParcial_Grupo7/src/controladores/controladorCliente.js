@@ -77,7 +77,7 @@ exports.buscarCliente = async (req,res,next) =>{
 
 //insertar cliente
 exports.insertarcliente = async (req,res,next) =>{
-    const {nom_cliente,apellido_cliente, RTN , DNI_Cliente , tel_cliente,direccion_cliente} = req.body;
+    const {nom_cliente,apellido_cliente, RTN , DNI_Cliente , tel_cliente,direccion_cliente,} = req.body;
    
   
         try {

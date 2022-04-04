@@ -120,19 +120,21 @@ exports.Error = (req, res) => {
 
 exports.insertarUsuariocliente = async (req,res,next) =>{
     const {nombre_usuario,contraenia_usuario, correo_usuario}= req.body;
-    const passwordHash = await bcrypt.hash(contraenia_usuario,12);
+   // const passwordHash = await bcrypt.hash(contraenia_usuario,12);
 
-       const id_cliente = await prisma.clientes.findFirst({
+
+    try{
+        const id_cliente = await prisma.clientes.findFirst({
             orderBy :
             {
                 id_cliente: 'desc',
             },
       
         });
-        await prisma.usuariosClientes.create({
+        const usuariocliente = await prisma.usuariosClientes.create({
           data:{ 
             nombre_usuario: nombre_usuario,
-            contraenia_usuario: passwordHash,
+            contraenia_usuario: contraenia_usuario,
             correo_usuario: correo_usuario,
            id_cliente:Number(id_cliente.id_cliente),
             estado:true
@@ -140,13 +142,16 @@ exports.insertarUsuariocliente = async (req,res,next) =>{
         })
         .then((data) => {
             console.log(data);
-            emailer.sendMail(clientes.correo_usuario);
+            emailer.sendMail(usuariocliente.correo_usuario);
             res.send(data);
-          })
-          .catch((err) => {
-            console.log(err);
-            res.send(err);
           });
+          res.json(usuariocliente);
+    }
+    catch(err){
+        console.log(err)
+        next(err);
+    }
+       
 }
 
 

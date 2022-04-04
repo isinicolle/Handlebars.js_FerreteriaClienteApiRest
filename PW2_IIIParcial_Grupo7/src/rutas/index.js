@@ -30,7 +30,7 @@ router.get('/crearcuenta', (req,res)=>{
 });
 
 router.get('/crearcuenta2', (req,res)=>{
-    titulo = "Crea tu nueva cuenta"
+    titulo = "Ya casi falta poco"
     res.render('crearcuenta2', {titulo});
 });
 
