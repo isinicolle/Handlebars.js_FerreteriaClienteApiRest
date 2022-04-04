@@ -8,6 +8,7 @@ const ModeloUsuario = prisma.usuariosClientes;
 const msj = require('../configuraciones/mensaje');
 const joi = require("@hapi/joi");
 const { text } = require('express');
+const id_clientee = "";
 
 const validar = joi.object({
     nombre_usuario: joi.string().min(2).required(),
@@ -119,26 +120,34 @@ exports.Error = (req, res) => {
 
 exports.insertarUsuariocliente = async (req,res,next) =>{
     const {nombre_usuario,contraenia_usuario, correo_usuario}= req.body;
-    const passwordHash = await bcrypt.hash(contraenia_usuario,12);
+   // const passwordHash = await bcrypt.hash(contraenia_usuario,12);
 
-        await prisma.usuariosClientes.create({
+
+    try{
+        const id_cliente = await prisma.clientes.findFirst({
+            orderBy :
+            {
+                id_cliente: 'desc',
+            },
+      
+        });
+
+        const usuariocliente = await prisma.usuariosClientes.create({
           data:{ 
             nombre_usuario: nombre_usuario,
-            contraenia_usuario: passwordHash,
+            contraenia_usuario: contraenia_usuario,
             correo_usuario: correo_usuario,
-            Clientes:{connect:{id_cliente: Number(7)}},
+           Clientes:{connect:{id_cliente: Number(id_cliente.id_cliente)}},
             estado:true
         },
         })
-        .then((data) => {
-            console.log(data);
-            emailer.sendMail(clientes.correo_usuario);
-            res.send(data);
-          })
-          .catch((err) => {
-            console.log(err);
-            res.send("datos");
-          });
+        res.json(usuariocliente);
+    }
+    catch(err){
+        console.log(err)
+        next(err);
+    }
+    res.render('iniciarsesion')
 }
 
 
@@ -367,3 +376,21 @@ exports.actualizarClave= async (req,res) =>{
    
    
 }
+
+
+exports.id = async (req,res,next) =>{
+    try {
+        id_clientee = await prisma.clientes.findFirst({
+            orderBy :
+            {
+                id_empleado: 'desc',
+            },
+      
+        });
+     
+        res.json( id_clientee);
+    } catch (error) {
+        console.log(error)
+        next(error);
+    }
+};

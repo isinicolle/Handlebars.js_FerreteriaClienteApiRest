@@ -44,35 +44,26 @@
         </section>
 
         <main class="main">
-       <form class="row g-3" action="/api/clientes/insertarCliente" method="post">
+       <form class="row g-3" action="/api/usuarioCliente/insertarUsuarioCliente" method="post">
         <div class="col-md-6 mb-3">
-            <label for="" class="form-label">Nombre</label>
-            <input type="text" required class="form-control" name="nom_cliente" placeholder="Escriba el nombre">
-        </div>
-        <div class="col-md-6 mb-3">
-            <label for="" class="form-label">Apellido</label>
-            <input type="text" required class="form-control" name="apellido_cliente" placeholder="Escriba el apellido">
+            <label for="" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" name="nombre_usuario" placeholder="Escriba el nombre de usuario">
         </div>
         <div class="col-md-6 mb-3">
-            <label for="" class="form-label">RTN</label>
-            <input type="text"  required class="form-control" name="RTN" placeholder="Escriba el RTN">
+            <label for="" class="form-label">Clave</label>
+            <input type="password" class="form-control" name="contraenia_usuario" >
         </div>
         <div class="col-md-6 mb-3">
-            <label for="" class="form-label">DNI</label>
-            <input type="text"  required class="form-control" name="DNI_Cliente" placeholder="Escriba el dni">
+            <label for="" class="form-label">Correo</label>
+            <input type="email" class="form-control" name="correo_usuario" placeholder="Escriba el correo">
         </div>
-        <div class="col-md-6 mb-3">
-            <label for="" class="form-label">Teléfono</label>
-            <input type="text"  required class="form-control" name="tel_cliente" placeholder="Escriba el telefono">
+        <div class="col-md-6">
+            <a href="iniciarsesion" >
+             <button type="submit" class="btn btn-primary">Terminar </button>
+             </a>
         </div>
-        <div class="col-md-6 mb-3">
-            <label for="" class="form-label">Direccion</label>
-            <input type="text"  required class="form-control" name="direccion_cliente" placeholder="Escriba la direccion">
-        </div>
-          <div class="col-md-6">
-            <button type="submit" class="btn btn-primary" >Siguiente</button>
-        </div>
-       </form>
+        </form>
+        
         </main>
 
         <footer class="main-footer">
@@ -99,6 +90,7 @@
                     <p class="column__txt"><a href="https://mail.google.com" class="icon-mail">Gmail</a></p>
                 </column>
             </div>
+
         </footer>
 
         <script src="../js/menu.js"></script>

@@ -25,7 +25,13 @@ router.get('/iniciarsesion', (req,res)=>{
 });
 
 router.get('/crearcuenta', (req,res)=>{
-    res.render('crearcuenta');
+    titulo = "Crea tu nueva cuenta"
+    res.render('crearcuenta', {titulo});
+});
+
+router.get('/crearcuenta2', (req,res)=>{
+    titulo = "Ya casi falta poco"
+    res.render('crearcuenta2', {titulo});
 });
 
 
