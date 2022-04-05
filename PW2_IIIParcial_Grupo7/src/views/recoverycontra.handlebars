@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
     <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -52,38 +51,27 @@
                     <img src="../img/imagen (2).png">
                 </div>
                 <!--aca en la ACTION va ir el formulario al que vamos a ir-->
-                <form name='form' class="col-12" action="/api/usuarioCliente/loginUsuarioCliente" method="post">
+                <form name='form' class="col-12" action="/api/usuarioCliente/recoveryclave" method="GET">
                     <!--Usuario-->
                     <div class="form-group" id="user-group">
                         <input required type="text" class="form-control" placeholder="Username" name="correo_usuario" />
                     </div>
-                    <!--Contraseña-->
-                    <div class="form-group" id="contrasena-group">
-                        <input required type="password" class="form-control" placeholder="Password"
-                            name="contraenia_usuario" />
-                    </div>
                     <a>
-                        <button type="submit" class="btn btn-primary" id="entrar">ENTRAR</button>
+                        <button type="submit" class="btn btn-primary" id="entrar">ENVIAR </button>
                     </a href="home">
-                    <button type="reset" class="btn btn-secondary" value="Cancel">Crear Cuenta</button>
-                    <div class="col-12 forgot" id="olvido">
-                        <a href="./recoverycontra">I forgot my password?</a>
-                    </div>
-
-                    <!--localStorage-->
-                    <script>
-                        //localStorage.setItem('user', buscarUsuarioCliente.id_usuarioCliente);
-                        localStorage.setItem('user', { buscarUsuarioCliente.dataValue.id_usuarioCliente });
-                    </script>
 
                 </form>
-
-
-
             </div>
         </div>
     </div>
 
+    <script>
+        document.elementById("entrar").addEventListener("click", entrar);
+
+        function entrar() {
+            sessionStorage.setItem("correo_usuario", "correo_usuario")
+        }
+    </script>
 </body>
 
 </html>

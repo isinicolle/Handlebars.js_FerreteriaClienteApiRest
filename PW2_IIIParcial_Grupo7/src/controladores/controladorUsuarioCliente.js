@@ -1,7 +1,7 @@
-const {PrismaClient} = require('@prisma/client') ;
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const bcrypt = require ('bcrypt');
+const bcrypt = require('bcrypt');
 const emailer = require('../configuraciones/emailer');
 const passport = require('../configuraciones/passport');
 const ModeloUsuario = prisma.usuariosClientes;
@@ -23,9 +23,9 @@ const validarEstado = joi.object({
 const validarClave = joi.object({
     contraenia_usuario: joi.string().min(6).required(),
 
-});   
-  
-exports.listarUsuarioCliente = async (req,res,next) =>{
+});
+
+exports.listarUsuarioCliente = async (req, res, next) => {
     try {
         const usuariocliente = await prisma.usuariosClientes.findMany();
         res.json(usuariocliente);
@@ -35,15 +35,13 @@ exports.listarUsuarioCliente = async (req,res,next) =>{
     }
 }
 
-exports.buscarUsuarioCliente = async (req,res,next) =>{
-    const {id_usuarioCliente} =req.query;
+exports.buscarUsuarioCliente = async (req, res, next) => {
+    const { id_usuarioCliente } = req.query;
 
-    if(!id_usuarioCliente)
-    {
+    if (!id_usuarioCliente) {
         res.send("Envie el id de cliente");
     }
-    else
-    {
+    else {
         try {
             const buscarUsuarioCliente = await prisma.usuariosClientes.findUnique(
                 {
@@ -52,26 +50,24 @@ exports.buscarUsuarioCliente = async (req,res,next) =>{
                         id_usuarioCliente: Number(id_usuarioCliente),
                     },//
                 })//
-                res.json(buscarUsuarioCliente)
+            res.json(buscarUsuarioCliente)
         } catch (error) {
             next(error)
         }
-       
-           
+
+
     }
 }
 
 exports.ValidarAutenticado = passport.ValidarAutenticado;
 
-exports.loginUsuarioCliente = async (req,res,next) =>{
-    const {correo_usuario,contraenia_usuario} =req.body;
+exports.loginUsuarioCliente = async (req, res, next) => {
+    const { correo_usuario, contraenia_usuario } = req.body;
 
-    if(!correo_usuario || !contraenia_usuario)
-    {
+    if (!correo_usuario || !contraenia_usuario) {
         res.send("Debe ingresar todos los datos");
     }
-    else
-    {
+    else {
         try {
             const buscarUsuarioCliente = await prisma.usuariosClientes.findFirst(
                 {
@@ -80,35 +76,37 @@ exports.loginUsuarioCliente = async (req,res,next) =>{
                         correo_usuario: correo_usuario,
                     },// 
                 })//
-                if(buscarUsuarioCliente!=null){
-                if(bcrypt.compareSync(contraenia_usuario,buscarUsuarioCliente.contraenia_usuario)){
-                    if(buscarUsuarioCliente.estado==true){
+            if (buscarUsuarioCliente != null) {
+                if (bcrypt.compareSync(contraenia_usuario, buscarUsuarioCliente.contraenia_usuario)) {
+                    if (buscarUsuarioCliente.estado == true) {
 
-                        const token = passport.generarToken({correo_usuario: buscarUsuarioCliente.correo_usuario});
+                        const token = passport.generarToken({ correo_usuario: buscarUsuarioCliente.correo_usuario });
                         console.log(token);
- 
+
                         const data = {
                             token: token,
                             data: buscarUsuarioCliente
-                        }; 
-                        msj("Bienvenido", 200, data, res);
+                        };
+                        //msj("Bienvenido", 200, data, res);
+
                     }
-                    else{
-                        
+                    else {
                         res.send("Este usuario esta inactivo, comunicarse con servicio al cliente")
                     }
+                    res.redirect("http://localhost:6001/api");
                 }
-                else{
-                    console.log(correo_usuario,contraenia_usuario)
+                else {
+                    console.log(correo_usuario, contraenia_usuario)
                     res.send("Usuario o contraseña incorrecto")
                 }
             }
-            else{
-                res.send("Usuario o contraseña incorrecto")
+            else {
+                //res.send("Usuario o contraseña incorrecto")
             }
+            console.log(buscarUsuarioCliente)
         } catch (error) {
             console.log(error);
-            res.send("Ha ocurrido un error inesperado");
+            //res.send("Ha ocurrido un error inesperado");
         }
     }
 };
@@ -117,41 +115,39 @@ exports.Error = (req, res) => {
     msj("Debe estar autenticado", 200, [], res);
 };
 
-exports.insertarUsuariocliente = async (req,res,next) =>{
-    const {nombre_usuario,contraenia_usuario, correo_usuario}= req.body;
-    const passwordHash = await bcrypt.hash(contraenia_usuario,12);
+exports.insertarUsuariocliente = async (req, res, next) => {
+    const { nombre_usuario, contraenia_usuario, correo_usuario } = req.body;
+    const passwordHash = await bcrypt.hash(contraenia_usuario, 12);
 
-        await prisma.usuariosClientes.create({
-          data:{ 
+    await prisma.usuariosClientes.create({
+        data: {
             nombre_usuario: nombre_usuario,
             contraenia_usuario: passwordHash,
             correo_usuario: correo_usuario,
-            Clientes:{connect:{id_cliente: Number(7)}},
-            estado:true
+            Clientes: { connect: { id_cliente: Number(7) } },
+            estado: true
         },
-        })
+    })
         .then((data) => {
             console.log(data);
             emailer.sendMail(clientes.correo_usuario);
             res.send(data);
-          })
-          .catch((err) => {
+        })
+        .catch((err) => {
             console.log(err);
             res.send("datos");
-          });
+        });
 }
 
 
 //eliminar usuario del cliente
-exports.eliminarUsuariocliente= async (req,res) =>{
-    const {id_usuarioCliente} =req.query;
+exports.eliminarUsuariocliente = async (req, res) => {
+    const { id_usuarioCliente } = req.query;
 
-    if(!id_usuarioCliente)
-    {
+    if (!id_usuarioCliente) {
         res.send("Envie el id de registro");
     }
-    else
-    {
+    else {
         try {
             const eliminarUsuariocliente = await prisma.usuariosClientes.delete(
                 {
@@ -160,98 +156,90 @@ exports.eliminarUsuariocliente= async (req,res) =>{
                         id_usuarioCliente: Number(id_usuarioCliente),
                     },//
                 })//
-               
-                res.json(eliminarUsuariocliente)
+
+            res.json(eliminarUsuariocliente)
         } catch (error) {
             next(error)
         }
-       
-           
+
+
     }
 }
 
-exports.actualizarCliente= async (req,res) =>{
-    const {id_usuarioCliente} =req.query;
-    const {nombre_usuario,contraenia_usuario,id_cliente,correo_usuario} = req.body;
+exports.actualizarCliente = async (req, res) => {
+    const { id_usuarioCliente } = req.query;
+    const { nombre_usuario, contraenia_usuario, id_cliente, correo_usuario } = req.body;
 
 
-    if(!id_usuarioCliente)
-    {
+    if (!id_usuarioCliente) {
         res.send("Envie el id del usuario del cliente");
     }
-    else
-    {
+    else {
         const result = await validar.validate(req.body);
-        if(result.error)
-        {
+        if (result.error) {
             res.send("ERROR! Verifique que los datos a ingresar tienen el formato correcto");
-    
-        
-            
+
+
+
         }
-        else
-        {
+        else {
             try {
-                const passwordHash = await bcrypt.hash(contraenia_usuario,12)
+                const passwordHash = await bcrypt.hash(contraenia_usuario, 12)
                 const clientes = await prisma.usuariosClientes.update({
-                where:
-                {
-                      id_usuarioCliente: Number(id_usuarioCliente),
-                },
-                data: 
-                {
-                    nombre_usuario: nombre_usuario,
-                    contraenia_usuario: passwordHash,
-                    id_cliente: id_cliente,
-                    correo_usuario: correo_usuario,
-                }
-                
+                    where:
+                    {
+                        id_usuarioCliente: Number(id_usuarioCliente),
+                    },
+                    data:
+                    {
+                        nombre_usuario: nombre_usuario,
+                        contraenia_usuario: passwordHash,
+                        id_cliente: id_cliente,
+                        correo_usuario: correo_usuario,
+                    }
+
                 })
-                
+
                 res.json(clientes);
             } catch (error) {
                 console.log(error)
                 next(error)
             }
         }
-       
+
     }
 }
 
-exports.actualizarEstadoCliente= async (req,res) =>{
-    const {id_usuarioCliente} =req.query;
-    const {estado} = req.body;
+exports.actualizarEstadoCliente = async (req, res) => {
+    const { id_usuarioCliente } = req.query;
+    const { estado } = req.body;
 
 
-    if(!id_usuarioCliente)
-    {
+    if (!id_usuarioCliente) {
         res.send("Debe enviar el id del usuario");
     }
-    else
-    {
+    else {
 
         const result = await validarEstado.validate(req.body);
-        if(result.error)
-        {
+        if (result.error) {
             res.send("ENVIE UN DATO TRUE/FALSE PARA EL ESTADO");
-    
-        
-            
+
+
+
         }
-        else
-        {
+        else {
             try {
-      
+
                 const clientes = await prisma.usuariosClientes.update({
-                where:
-                {
-                    id_usuarioCliente: Number(id_usuarioCliente),
-                },
-                data: 
-                {
-                    estado: estado,
-                }
-                
+                    where:
+                    {
+                        id_usuarioCliente: Number(id_usuarioCliente),
+                    },
+                    data:
+                    {
+                        estado: estado,
+                    }
+
                 })
                 res.json(clientes);
             } catch (error) {
@@ -259,58 +247,55 @@ exports.actualizarEstadoCliente= async (req,res) =>{
                 next(error)
             }
         }
-     
+
     }
-   
+
 }
 
 
 
-exports.recuperarContrasena = async (req, res, next)=>
-{   
-    
-    const {correo_usuario} =req.query;
-    var contraenia_usuario
-   
+exports.recuperarContrasena = async (req, res, next) => {
 
-    if(!correo_usuario)
-    {
+    const { correo_usuario } = req.query;
+    var contraenia_usuario
+
+
+    if (!correo_usuario) {
         res.send("Envie el correo usuario del cliente");
         console.log('error')
     }
-    else
-    {
+    else {
 
         contraenia_usuario = (Math.floor(Math.random() * (99999 - 11111)) + 11111).toString();
-        const passwordHash = await bcrypt.hash(contraenia_usuario,12)
-      
+        const passwordHash = await bcrypt.hash(contraenia_usuario, 12)
+
         try {
-            
+
             var buscarUser = await prisma.usuariosClientes.findFirst({
-             where:
-            {
-                correo_usuario: correo_usuario,
-            },
+                where:
+                {
+                    correo_usuario: correo_usuario,
+                },
             })
-            
-           
+
+
             const clientes = await prisma.usuariosClientes.update({
                 where:
                 {
-                      id_usuarioCliente: Number(buscarUser.id_usuarioCliente),
+                    id_usuarioCliente: Number(buscarUser.id_usuarioCliente),
                 },
-                data: 
+                data:
                 {
                     contraenia_usuario: passwordHash,
                 }
-                
+
 
             })
 
 
 
-            emailer.sendMailPassword(clientes.correo_usuario,contraenia_usuario);
-            res.json("Correo: "+clientes.correo_usuario+" Clave nueva: "+contraenia_usuario+" Ingrese nuevamente para cambiar su clave");
+            emailer.sendMailPassword(clientes.correo_usuario, contraenia_usuario);
+            res.json("Correo: " + clientes.correo_usuario + " Clave nueva: " + contraenia_usuario + " Ingrese nuevamente para cambiar su clave");
             console.log('hola')
 
 
@@ -319,51 +304,48 @@ exports.recuperarContrasena = async (req, res, next)=>
             next(error)
         }
     }
-   
+
 };
 
-exports.actualizarClave= async (req,res) =>{
-    const {id_usuarioCliente} = req.query;
-    const {contraenia_usuario} = req.body;
+exports.actualizarClave = async (req, res) => {
+    const { id_usuarioCliente } = req.query;
+    const { contraenia_usuario } = req.body;
 
 
-    if(!id_usuarioCliente)
-    {
+    if (!id_usuarioCliente) {
         res.send("Envie el id del usuario del cliente");
     }
-    else
-    {
+    else {
         const result = await validarClave.validate(req.body);
 
-        if(result.error){
+        if (result.error) {
             res.send("ERROR! Verifique que su clave tenga mas de 6 digitos");
         }
-        else
-        {
+        else {
             try {
-                const passwordHash = await bcrypt.hash(contraenia_usuario,12)
+                const passwordHash = await bcrypt.hash(contraenia_usuario, 12)
                 const clientes = await prisma.usuariosClientes.update({
-                where:
-                {
-                      id_usuarioCliente: Number(id_usuarioCliente),
-                },
-                data: 
-                {
-            
-                    contraenia_usuario: passwordHash,
-       
-                }
-                
+                    where:
+                    {
+                        id_usuarioCliente: Number(id_usuarioCliente),
+                    },
+                    data:
+                    {
+
+                        contraenia_usuario: passwordHash,
+
+                    }
+
                 })
-                
+
                 res.json(clientes);
             } catch (error) {
                 console.log(error)
                 next(error)
             }
         }
-      
+
     }
-   
-   
+
+
 }
