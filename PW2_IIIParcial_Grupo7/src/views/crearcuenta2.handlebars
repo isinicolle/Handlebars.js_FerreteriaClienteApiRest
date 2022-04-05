@@ -47,20 +47,20 @@
        <form class="row g-3" action="/api/usuarioCliente/insertarUsuarioCliente" method="post">
         <div class="col-md-6 mb-3">
             <label for="" class="form-label">Nombre de usuario</label>
-            <input type="text" class="form-control" name="nombre_usuario" placeholder="Escriba el nombre de usuario">
+            <input type="text" required  class="form-control" name="nombre_usuario" placeholder="Escriba el nombre de usuario">
         </div>
         <div class="col-md-6 mb-3">
             <label for="" class="form-label">Clave</label>
-            <input type="password" class="form-control" name="contraenia_usuario" >
+            <input type="password" required  class="form-control" name="contraenia_usuario" >
         </div>
         <div class="col-md-6 mb-3">
             <label for="" class="form-label">Correo</label>
-            <input type="email" class="form-control" name="correo_usuario" placeholder="Escriba el correo">
+            <input type="email" required  class="form-control" name="correo_usuario" placeholder="Escriba el correo">
         </div>
         <div class="col-md-6">
-            <a href="iniciarsesion" >
+          
              <button type="submit" class="btn btn-primary">Terminar </button>
-             </a>
+           
         </div>
         </form>
         
