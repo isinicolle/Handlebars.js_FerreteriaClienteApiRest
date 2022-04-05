@@ -64,15 +64,13 @@ exports.buscarUsuarioCliente = async (req,res,next) =>{
 
 exports.ValidarAutenticado = passport.ValidarAutenticado;
 
-exports.loginUsuarioCliente = async (req,res,next) =>{
-    const {correo_usuario,contraenia_usuario} =req.body;
+exports.loginUsuarioCliente = async (req, res, next) => {
+    const { correo_usuario, contraenia_usuario } = req.body;
 
-    if(!correo_usuario || !contraenia_usuario)
-    {
+    if (!correo_usuario || !contraenia_usuario) {
         res.send("Debe ingresar todos los datos");
     }
-    else
-    {
+    else {
         try {
             const buscarUsuarioCliente = await prisma.usuariosClientes.findFirst(
                 {
@@ -81,39 +79,40 @@ exports.loginUsuarioCliente = async (req,res,next) =>{
                         correo_usuario: correo_usuario,
                     },// 
                 })//
-                if(buscarUsuarioCliente!=null){
-                if(bcrypt.compareSync(contraenia_usuario,buscarUsuarioCliente.contraenia_usuario)){
-                    if(buscarUsuarioCliente.estado==true){
+            if (buscarUsuarioCliente != null) {
+                if (bcrypt.compareSync(contraenia_usuario, buscarUsuarioCliente.contraenia_usuario)) {
+                    if (buscarUsuarioCliente.estado == true) {
 
-                        const token = passport.generarToken({correo_usuario: buscarUsuarioCliente.correo_usuario});
+                        const token = passport.generarToken({ correo_usuario: buscarUsuarioCliente.correo_usuario });
                         console.log(token);
- 
+
                         const data = {
                             token: token,
                             data: buscarUsuarioCliente
-                        }; 
-                        msj("Bienvenido", 200, data, res);
+                        };
+                        //msj("Bienvenido", 200, data, res);
+
                     }
-                    else{
-                        
+                    else {
                         res.send("Este usuario esta inactivo, comunicarse con servicio al cliente")
                     }
+                    res.redirect("http://localhost:6001/api");
                 }
-                else{
-                    console.log(correo_usuario,contraenia_usuario)
+                else {
+                    console.log(correo_usuario, contraenia_usuario)
                     res.send("Usuario o contraseña incorrecto")
                 }
             }
-            else{
-                res.send("Usuario o contraseña incorrecto")
+            else {
+                //res.send("Usuario o contraseña incorrecto")
             }
+            console.log(buscarUsuarioCliente)
         } catch (error) {
             console.log(error);
-            res.send("Ha ocurrido un error inesperado");
+            //res.send("Ha ocurrido un error inesperado");
         }
     }
 };
-
 exports.Error = (req, res) => {
     msj("Debe estar autenticado", 200, [], res);
 };
