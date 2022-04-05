@@ -74,7 +74,7 @@ exports.buscarProductoFiltro = async(req,res)=>{
 }
 }
 exports.buscarProducto = async (req, res) => {
-    const id_producto = 2;
+    const { id_producto } = req.query;
     if(!id_producto) {
         res.send("Envie el id de registro");
     }
@@ -85,7 +85,7 @@ exports.buscarProducto = async (req, res) => {
                     where: {
                         id_producto: Number(id_producto),
                     },
-                    select:{descripcion_producto:true,cantidad_por_unidad:true,costo_producto:true,precio_actual:true,stock:true,descuento:true,imagen:true,Marcas:{select:{id_marca:true,descripcion_marca:true}},Categorias:{select:{id_categoria:true,descripcion_categoria:true}}}
+                    include:{Marcas:true,Categorias:true}
 
                 }
             )
