@@ -141,13 +141,13 @@ exports.insertarUsuariocliente = async (req,res,next) =>{
             estado:true
         },
         })
-        res.json(usuariocliente);
+       // res.json(usuariocliente);
     }
     catch(err){
         console.log(err)
         next(err);
     }
-    res.render('iniciarsesion')
+    res.redirect('http://localhost:6001/api/iniciarsesion');
 }
 
 

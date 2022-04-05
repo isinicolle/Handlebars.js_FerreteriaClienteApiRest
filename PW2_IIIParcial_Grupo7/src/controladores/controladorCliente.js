@@ -94,12 +94,13 @@ exports.insertarcliente = async (req,res,next) =>{
                     estado: true,
                 }
             })
-            res.json(clientes);
+           // res.json(clientes);
+           res.redirect('http://localhost:6001/api/crearcuenta2');
         } catch (error) {
             console.log(error)
             next(error);
         }
-        res.render('crearcuenta2');
+      
     
 }
 
