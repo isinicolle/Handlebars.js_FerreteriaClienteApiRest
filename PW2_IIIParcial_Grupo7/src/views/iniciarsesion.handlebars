@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -45,35 +46,43 @@
         <div class="col-sm-9 main-section">
             <div class="modal-content">
                 <div class="container pb-5">
-                    <h1 data-text="FERRETEAR">FERRETEAR</h1>
+                    <h1 data-text="Ferretear">Ferretear</h1>
                 </div>
                 <div class="col-12 user-img aling-center">
                     <img src="../img/imagen (2).png">
                 </div>
                 <!--aca en la ACTION va ir el formulario al que vamos a ir-->
-                <form name='form' class="col-12" action="../controladores/controladorLogin.php" method="post">
+                <form name='form' class="col-12" action="/api/usuarioCliente/loginUsuarioCliente" method="post">
                     <!--Usuario-->
                     <div class="form-group" id="user-group">
-                        <input required type="text" class="form-control" placeholder="Username" name="login" />
+                        <input required type="text" class="form-control" placeholder="Username" name="correo_usuario" />
                     </div>
                     <!--Contraseña-->
                     <div class="form-group" id="contrasena-group">
-                        <input required type="password" class="form-control" placeholder="Password" name="password" />
+                        <input required type="password" class="form-control" placeholder="Password"
+                            name="contraenia_usuario" />
                     </div>
-                    <!-- <input type="submit" onclick=go() class="btn btn-primary" name='save' data-toggle="modal" data-target="#exampleModal"> -->
-                    <button type="submit" class="btn btn-primary" id="guardar" name="guardar"
-                        value="Save Changes">Entrar</button>
-                    <button type="submit" class="btn btn-secondary" id="crear" name="crear" value="Save Changes">Crear
-                        Cuenta</button>
+                    <a>
+                        <button type="submit" class="btn btn-primary" id="entrar">ENTRAR</button>
+                    </a href="home">
+                    <button type="reset" class="btn btn-secondary" value="Cancel">Crear Cuenta</button>
+                    <div class="col-12 forgot" id="olvido">
+                        <a href="./recoverycontra">I forgot my password?</a>
+                    </div>
+
+                    <!--localStorage-->
+                    <script>
+                        localStorage.setItem('id_usuaurio', 56);
+                    </script>
+
                 </form>
-                <!--
-                     <div class="col-12 forgot" id="olvido">
-                        <a href="#">I forgot my password?</a>
-                    </div>
-                   -->
+
+
+
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
