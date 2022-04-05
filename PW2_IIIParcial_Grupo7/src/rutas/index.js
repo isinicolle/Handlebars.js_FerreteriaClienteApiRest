@@ -34,5 +34,8 @@ router.get('/crearcuenta2', (req,res)=>{
     res.render('crearcuenta2', {titulo});
 });
 
+router.get('/recoverycontra', (req, res) => {
+    res.render('recoverycontra');
+});
 
 module.exports=router; 
