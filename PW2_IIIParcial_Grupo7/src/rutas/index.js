@@ -38,4 +38,8 @@ router.get('/recoverycontra', (req, res) => {
     res.render('recoverycontra');
 });
 
+router.get('/miperfil', (req,res)=>{
+    res.render('miperfil');
+});
+
 module.exports=router; 
