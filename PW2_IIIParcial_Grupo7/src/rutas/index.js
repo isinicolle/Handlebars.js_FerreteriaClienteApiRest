@@ -18,7 +18,7 @@ router.get('/contactanos', (req,res)=>{
 });
 
 router.get('/carrito', (req,res)=>{
-    res.render('compra');
+    res.render('carrito');
 });
 
 
