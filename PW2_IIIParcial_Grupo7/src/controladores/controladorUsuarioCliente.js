@@ -10,6 +10,7 @@ const joi = require("@hapi/joi");
 const { text } = require('express');
 const id_clientee = "";
 
+
 const validar = joi.object({
     nombre_usuario: joi.string().min(2).required(),
     contraenia_usuario: joi.string().min(6).required(),
