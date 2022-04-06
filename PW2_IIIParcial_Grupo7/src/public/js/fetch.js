@@ -1,12 +1,10 @@
-fetch('http://localhost:6001/api/productos/listarProducto')
+const response = fetch('http://localhost:6001/api/productos/listarProducto')
     .then(res =>{
         return res.json();
     })
-    .then(data => mostrarData(data))
-    .catch(error =>console.log('Error'));
+    .then(data => mostrarProducto(data));
 
-const mostrarData = (data) =>{
-    console.log(data);
+const mostrarProducto = (data) =>{
     let body =''
     for(let i=0;i < data.length ;i++){
         body += `
@@ -18,7 +16,6 @@ const mostrarData = (data) =>{
             <input type="text" hidden name="idProd" value="${data[i].id_producto}">
             <input type="submit" class="btn_agregar" value="Agregar" >
             </form>
-            
         </column>
         `
     }

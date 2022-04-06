@@ -3,14 +3,12 @@ const controladorProducto = require('../controladores/controladorProducto');
 const { route } = require('./rutaDepartamento');
 const router = Router();
 
-
 router.get('/',(req,res)=>{ 
     res.render('iniciarsesion');
 });
 router.get('/home',(req,res)=>{ 
     res.render('home');
 });
-router.get('/buscarProducto');
 
 router.get('/nosotros', (req,res)=>{
     res.render('nosotros');

@@ -135,6 +135,10 @@ h1,h2,h3,h4,h5,h6{
     background:  rgb(197, 51, 71);
     color: white;
 }
+#carrito{
+    text-decoration: none;
+    
+}
 .mostrar{
     height: 141px;
 }
@@ -257,7 +261,7 @@ h1,h2,h3,h4,h5,h6{
     height: 35px;
     color: white;
     font-size: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border-radius: 7px;
     border: none;
 }
@@ -499,7 +503,7 @@ h1,h2,h3,h4,h5,h6{
 }
 @media screen and (min-width:1024px){
     .container{
-        width: 90%;
+        width: 95%;
         margin: auto;
     }
     .container__logo{
@@ -528,7 +532,7 @@ h1,h2,h3,h4,h5,h6{
         display: flex;
         width: auto;
         height: auto;
-        font-size: 1.3em;
+        font-size: 1em;
         background: rgba(255,255,255,.9);
     }
     .menu__link{
@@ -542,8 +546,8 @@ h1,h2,h3,h4,h5,h6{
     .social-icons [class*='icon-']{
         font-size: 1.4em;
         color:black;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         background: white;
         border-radius: 50%;
         margin-right: 20px;
@@ -568,7 +572,7 @@ h1,h2,h3,h4,h5,h6{
         margin: 0 auto 25px;
     }
     .decoration__img{
-        height: 200px;
+        height: 250px;
     }
     .decoration__title{
         font-size: 1.3em;

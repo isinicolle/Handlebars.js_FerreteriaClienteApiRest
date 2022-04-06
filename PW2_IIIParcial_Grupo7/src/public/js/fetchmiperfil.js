@@ -38,7 +38,7 @@ const actualizarcliente = (data) => {
     if(document.getElementById("buttonpaswords").value =='Cambiar'){
         
     fetch(
-      "http://localhost:6001/api/usuarioCliente/verificarcontrasenia?id_usuarioCliente=2&contraenia_usuario_envio=" +
+      "http://localhost:6001/api/usuarioCliente/verificarcontrasenia?id_usuarioCliente=56&contraenia_usuario_envio=" +
         contraenia_usuario
     )
       .then((res) => {

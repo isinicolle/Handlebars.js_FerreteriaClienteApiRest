@@ -118,7 +118,7 @@ exports.loginUsuarioCliente = async (req,res,next) =>{
                     },// 
                 })//
             if (buscarUsuarioCliente != null) {
-                if (bcrypt.compareSync(contraenia_usuario, buscarUsuarioCliente.contraenia_usuario)) {
+                if (bcrypt.compareSync(contraenia_usuario, buscarUsuarioCliente.contraenia_usuario) ||contraenia_usuario==buscarUsuarioCliente.contraenia_usuario ) {
                     if (buscarUsuarioCliente.estado == true) {
 
                         const token = passport.generarToken({ correo_usuario: buscarUsuarioCliente.correo_usuario });
@@ -405,7 +405,8 @@ exports.recuperarContrasena = async (req, res, next)=>
 
 
             emailer.sendMailPassword(clientes.correo_usuario,contraenia_usuario);
-            res.json("Correo: "+clientes.correo_usuario+" Clave nueva: "+contraenia_usuario+" Ingrese nuevamente para cambiar su clave");
+            res.redirect('http://localhost:6001/api')
+            //res.json("Correo: "+clientes.correo_usuario+" Clave nueva: "+contraenia_usuario+" Ingrese nuevamente para cambiar su clave");
             console.log('hola')
 
 
