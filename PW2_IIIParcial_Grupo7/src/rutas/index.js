@@ -24,6 +24,14 @@ router.get('/contactanos', (req,res)=>{
     res.render('contactanos');
 });
 
+router.get('/miperfil', (req,res)=>{
+    res.render('miperfil');
+});
+
+router.get('/iniciarsesion', (req,res)=>{
+    res.render('iniciarsesion');
+});
+
 router.get('/crearcuenta', (req,res)=>{
     titulo = "Crea tu nueva cuenta"
     res.render('crearcuenta', {titulo});

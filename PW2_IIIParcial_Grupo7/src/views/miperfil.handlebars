@@ -1,0 +1,127 @@
+          <head>
+            <link href="../css/miperfil.css" rel="stylesheet">
+        </head>
+      
+        
+        <header class="main-header">
+            <div class="container container--flex">
+                <div class="container__logo column column--50">
+                    <h1 class="logo">Ferreteria Ferretear | Mi Perfil</h1>
+                </div>
+                <div class="main-header__contactInfo column column--50">
+                    <p class="main-header__contactInfo__telefone"><span class="icon-telephone">Teléfono: +504 1234-5678</span></p>
+                    <p class="main-header__contactInfo__address"><span class="icon-map">Ubicación: Unicah</span></p>
+                </div>
+            </div>
+        </header>
+
+          <nav class="main-nav">
+            <div class="container container--flex">
+                <span class="icon-menu" id="btnmenu"></span>
+                <ul class="menu" id="menu">
+                    <li class="menu__item"><a href="home" class="menu__link menu__link--select">Inicio</a></li>
+                    <li class="menu__item"><a href="nosotros" class="menu__link">Nosotros</a></li>
+                    <li class="menu__item"><a href="galeria" class="menu__link">Galeria</a></li>
+                    <li class="menu__item"><a href="contactanos" class="menu__link">Contáctanos</a></li>
+                    <li class="menu__item"><a href="miperfil" class="menu__link">Perfil</a></li>
+                    <li class="menu__item"><a href="iniciarsesion" class="menu__link">Cerrar sesion</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com" class="social-icon__link"><span class="icon-facebook"></span></a>
+                    <a href="https://www.instagram.com" class="social-icon__link"><span class="icon-instagram"></span></a>
+                    <a href="https://twitter.com/i/flow/login" class="social-icon__link"><span class="icon-twitter"></span></a>
+                    <a href="https://mail.google.com" class="social-icon__link"><span class="icon-mail"></span></a>
+                    
+                </div>
+            </div>
+        </nav>
+     
+        <section class="banner">
+            <img src="../img/imagen.png" alt="" class="banner__img">
+            <div class="banner__content">Gracias por ser parte de esta familia</div>
+        </section>
+
+        <main class="main">
+            <div class="group group__contact">
+                <h2 class="main__title">Mi Usuario</h2>
+                <div class="container container--flex">
+                    <div class="group__information column column--50" >
+                      <img src="../img/usuario.jpg" alt="" class="group__img">
+                    </column>
+                    </div>
+                    <div id ="contenedor" class="form column column--50">
+                         <label for="" class="form__label">Usuario:</label>
+                         <div class="contain">
+                            <input type="text" class="form__input"  disabled="disabled" id="nombre" name="nombre">
+                            <input type="button"  onClick="javascript:activar('nombre')" value="Editar" class="column__btn_editar"></input>
+                           
+                         </div>
+                       
+                        <label for="" class="form__label">Correo:</label>
+                         <div class="contain">
+                             
+                             <input type="email" class="form__input"id="correo"  disabled="disabled" id="correo" name="correo">
+                             <input type="button"  onClick="javascript:activar('correo')" value="Editar" class="column__btn_editar"></input>
+                        </div>
+                        
+                       
+                        <label for="" class="form__label">Contraseña actual:</label>
+                            <div class="contain">
+                        <input type="password" class="form__input"  disabled="disabled"  id="contrasenia" name="contraseña" >
+                     <input type="button" id="buttonpaswords"  onClick="javascript:activar('contraseña')" value="Cambiar" class="column__btn_editar"></input>
+                        </div>
+                        
+                        <label for="" class="form__label">Nueva contraseña:</label>
+                        <div class="contain">
+                            <P> </P>
+                        <input type="password" class="form__input"  disabled="disabled" id="newpass" name="contraseña">
+                        
+                        </div>
+                        <label for="" class="form__label">confirmar nueva contraseña:</label>
+                        <div class="contain">
+                            <P> </P>
+                        <input type="password" class="form__input" disabled="disabled" id="confnewpass"name="contraseña">
+                        </div>
+                          <div class="form__input1">
+                        <input type="button"  onClick="javascript:actualizar()" type="reset" disabled="disabled"  value="Actualizar" id="actualizar" class="column__btn">
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container container--flex">
+                <column class="column column--33">
+                    <h2 class="column__title">¿Por qué visitarnos?</h2>
+                    <p class="column__txt">
+                        Somos una ferreteria que nos importa venderle calidad 
+                        a nuestros clientes para que puedan construir de mejor manera
+                        sus objetivos y planes. Ven y crea sueños con nosotros
+                    </p>
+                </column>
+                <column class="column column--33">
+                    <h2 class="column__title">Contactanos</h2>
+                    <p class="column__txt">Teléfono: +504 1234-5678</p>
+                    <p class="column__txt">Correo: ferreteriaferretear@gmail.com</p>
+                    <p class="column__txt">Ubicación: UNICAH</p>
+                </column>
+                <column class="column column--33">
+                    <h2 class="column__title">Síguenos en nuestras redes sociales</h2>
+                    <p class="column__txt"><a href="https://www.facebook.com" class="icon-facebook">Facebook</a></p>
+                    <p class="column__txt"><a href="https://www.instagram.com" class="icon-instagram">Instagram</a></p>
+                    <p class="column__txt"><a href="https://twitter.com/i/flow/login" class="icon-twitter">Twitter</a></p>
+                    <p class="column__txt"><a href="https://mail.google.com" class="icon-mail">Gmail</a></p>
+                </column>
+            </div>
+        </footer>
+
+        <script src="../js/menu.js"></script>        <head>
+            <link href="../css/miperfil.css" rel="stylesheet">
+        </head>
+       
+       <script src="../js/fetchmiperfil.js"></script>
+        <script src="../js/miperfil.js"></script>
+        .
