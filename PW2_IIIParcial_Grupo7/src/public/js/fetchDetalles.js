@@ -3,9 +3,11 @@ fetch('http://localhost:6001/api/productos/buscarProducto?id_producto='+document
         return res.json();
     })
     .then(data => mostrarData(data))
-    .catch(error =>console.log('Error'));
+    .catch(error =>console.log(error));
 
 const mostrarData = (data) =>{
+    const idUsuario=sessionStorage.getItem('id_usuario');
+    console.log(idUsuario)
     console.log(data);
     document.getElementById('imgProd').innerHTML=`
     <img src="${(data.imagen.includes('http')? data.imagen:'http://192.168.100.48:6001/img/'+data.imagen)}" id="" alt="" />`

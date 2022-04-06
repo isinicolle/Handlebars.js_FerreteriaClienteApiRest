@@ -96,7 +96,7 @@ exports.loginUsuarioCliente = async (req, res, next) => {
                     else {
                         res.send("Este usuario esta inactivo, comunicarse con servicio al cliente")
                     }
-                    res.redirect("http://localhost:6001/api");
+                    res.redirect("http://localhost:6001/api/home");
                 }
                 else {
                     console.log(correo_usuario, contraenia_usuario)
@@ -146,7 +146,7 @@ exports.insertarUsuariocliente = async (req,res,next) =>{
         console.log(err)
         next(err);
     }
-    res.redirect('http://localhost:6001/api/iniciarsesion');
+    res.redirect('http://localhost:6001/api');
 }
 
 

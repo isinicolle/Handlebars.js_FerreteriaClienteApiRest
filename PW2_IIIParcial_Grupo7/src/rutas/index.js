@@ -1,9 +1,13 @@
 const { Router } = require('express');
 const controladorProducto = require('../controladores/controladorProducto');
+const { route } = require('./rutaDepartamento');
 const router = Router();
 
 
 router.get('/',(req,res)=>{ 
+    res.render('iniciarsesion');
+});
+router.get('/home',(req,res)=>{ 
     res.render('home');
 });
 router.get('/buscarProducto');
@@ -18,10 +22,6 @@ router.get('/galeria', (req,res)=>{
 
 router.get('/contactanos', (req,res)=>{
     res.render('contactanos');
-});
-
-router.get('/iniciarsesion', (req,res)=>{
-    res.render('iniciarsesion');
 });
 
 router.get('/crearcuenta', (req,res)=>{
@@ -47,5 +47,10 @@ router.get('/buscarProducto');
 router.get('/carrito', (req,res)=>{
     res.render('carrito');
 });
+
+router.get('/detallesProducto',(req,res)=>{
+    console.log(req.query);
+    res.render('product-details',{req:req});
+})
 
 module.exports=router; 

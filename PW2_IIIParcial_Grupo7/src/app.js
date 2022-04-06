@@ -51,13 +51,8 @@ app.use('/api/ventas', require('./rutas/rutasVentas'));
 //VENTAS DETALLE
 app.use('/api/ventasdetalle', require('./rutas/rutasDetalleVentas'));
 app.use('/api/carrito', rutaCarrito);
-app.get('/',(req,res)=>{
-    res.render('home');
-})
-app.get('/detallesProducto',(req,res)=>{
-    console.log(req.query);
-    res.render('product-details',{req:req});
-})
+
+
 //definir el puerto que se usara en el servidor
 app.listen(6001, () => {
     console.log("Servidor iniciado en el puerto 6001");
