@@ -1,12 +1,9 @@
 const { Router } = require('express');
-const controladorProducto = require('../controladores/controladorProducto');
 const router = Router();
-
 
 router.get('/',(req,res)=>{ 
     res.render('home');
 });
-router.get('/buscarProducto');
 
 router.get('/nosotros', (req,res)=>{
     res.render('nosotros');

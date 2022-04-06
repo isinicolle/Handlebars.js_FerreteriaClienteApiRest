@@ -35,7 +35,43 @@
     font-size: 24px;
 }
 .rows{
-    font-size: 24px;
+    font-size: 20px;
     padding: 0 10px;
     
+}
+.btnIcon{
+    border: none;
+    background: #fff;
+}
+.container{
+    width: 1300px;
+}
+.main__title{
+    font-size: 35px;
+}
+.group__item{
+    display: flex;
+    justify-content: center;
+    width: 1100px;
+    margin: 0 auto;
+}
+.item{
+    display: inline-block;
+    font-size: 26px;
+    padding: 40px;
+    font-weight: 100;
+    text-align: center;
+    font-weight:500;
+    background: #dddd;
+}
+.group__item:hover{
+    background: rgb(132, 132, 132);
+}
+.item__txt{
+    display: inline-block;
+    background: rgb(184, 184, 184);
+    padding: 50px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 938px;
 }

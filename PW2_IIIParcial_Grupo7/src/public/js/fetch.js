@@ -5,7 +5,6 @@ const response = fetch('http://localhost:6001/api/productos/listarProducto')
     .then(data => mostrarProducto(data));
 
 const mostrarProducto = (data) =>{
-    console.log(data);
     let body =''
     for(let i=0;i < data.length ;i++){
         body += `
@@ -19,4 +18,3 @@ const mostrarProducto = (data) =>{
     }
     document.getElementById('data').innerHTML = body
 }
-

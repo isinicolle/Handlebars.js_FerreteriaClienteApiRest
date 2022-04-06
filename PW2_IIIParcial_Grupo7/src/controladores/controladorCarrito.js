@@ -5,30 +5,33 @@ const mensaje = require("../configuraciones/mensaje");
 const prisma = new PrismaClient();
 const modeloCarrito = prisma.carrito;
 const modeloItemCarrito = prisma.carritoItem;
-const modeloDetalleVenta = prisma.detallesVentas;
-const modeloVenta = prisma.venta;
-const modeloUsuario = prisma.usuariosClientes
+const modeloProductos = prisma.productos;
 
 exports.MostrarCarrito= async (req,res,next)=>{
     let {idUsuario} = req.query;
-    /*console.log(idUsuario);
+    console.log(idUsuario);
     if (!idUsuario || idUsuario==undefined){
     mensaje('Error al iniciar sesion',200,idUsuario,res);
     next(mensaje);
     }else
-    {*/
+    {
         idUsuario = parseInt(idUsuario);
     let Carrito = await modeloCarrito.findFirst({
         where:{id_usuarioCliente:idUsuario},
         select:{CarritoItem:{select:{Productos:true,Productos:{include:{Marcas:true,Categorias:true}},cantidad:true}, }
+            },
+        });
+    let carritoItem = await modeloItemCarrito.findMany({
+            where:{
+                id_Carrito:Carrito.id_carrito
             }
-  
-
-});
+        });
+    let productos = await modeloProductos.findMany({
+        where:{CarritoItem:{some:{Productos:{id_producto:carritoItem.id_producto}}}}
+    })
     Carrito = await calcularPrecio(Carrito);
-    res.json(Carrito); 
-
-//} 
+    res.json({Carrito,carritoItem,productos});
+} 
 };  
 
 exports.nuevoCarrito= async(req,res)=>{
@@ -132,14 +135,97 @@ exports.modificarCarrito = async(req,res)=>{
                 return Carrito;
             }
 }
-
+exports.buscarCarritoItem = async (req,res,next) =>{
+    try {
+        const id_Carrito = parseInt(req.params.id);
+        const cartItem = await modeloItemCarrito.findMany({
+            where:{id_Carrito}
+        });
+        res.send(cartItem);
+    } catch (error) {
+        next(error);
+    }
+}
 exports.eliminarProducto = async (req,res,next) =>{
     try {
         const itemId = parseInt(req.params.id);
-        const items =  await modeloItemCarrito.delete({
+        const items =  await modeloItemCarrito.deleteMany({
             where:{id_itemCarrito:itemId}
         });
-        res.send(items);
+    } catch (error) {
+        next(error);
+    }
+}
+exports.incrementar = async (req,res,next) =>{
+    try {
+        const id_producto = parseInt(req.params.id);
+        const productId = await modeloItemCarrito.updateMany({
+            where:{id_producto},
+            data:{
+                cantidad: {increment:1}
+            }
+        }).then((data)=>{
+            res.send(data);
+        }).catch((error)=>{
+            console.log(error);
+        });
+        console.log(productId);
+    } catch (error) {
+        next(error);
+    }
+}
+exports.incrementar = async (req,res,next) =>{
+    try {
+        const id_producto = parseInt(req.params.id);
+        const productId = await modeloItemCarrito.updateMany({
+            where:{id_producto},
+            data:{
+                cantidad: {increment:1}
+            }
+        }).then((data)=>{
+            res.send(data);
+        }).catch((error)=>{
+            console.log(error);
+        });
+        console.log(productId);
+    } catch (error) {
+        next(error);
+    }
+}
+exports.decrementar = async (req,res,next) =>{
+    try {
+        const id_producto = parseInt(req.params.id);
+        const productId = await modeloItemCarrito.updateMany({
+            where:{AND:[
+                {
+                    cantidad:{gt:1},
+                    id_producto
+                }
+            ]},
+            data:{
+                cantidad: {decrement:1}
+            }
+        }).then((data)=>{
+            res.send(data);
+        }).catch((error)=>{
+            console.log(error);
+        });
+        console.log(productId);
+    } catch (error) {
+        next(error);
+    }
+}
+
+exports.findCart = async (req,res,next) => {
+    try {
+        const id_carrito = parseInt(req.params.id);
+        const cartId = await modeloItemCarrito.findMany({
+            where:{
+                Carrito:{id_carrito}
+            },
+            select:{Productos:true,Carrito:true,cantidad:true,id_itemCarrito:true}
+        });
+        res.send(cartId);
     } catch (error) {
         next(error);
     }
