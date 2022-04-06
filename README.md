@@ -1,5 +1,5 @@
 # PW2_IIIParcial_Grupo7
-Parte administrativa del proyecto
+Parte cliente del proyecto
 Alex Sandoval
 Andres Martinez
 David Chavez
