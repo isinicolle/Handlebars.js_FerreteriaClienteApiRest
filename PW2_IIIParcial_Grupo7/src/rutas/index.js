@@ -44,4 +44,8 @@ router.get('/miperfil', (req,res)=>{
 
 router.get('/buscarProducto');
 
+router.get('/carrito', (req,res)=>{
+    res.render('carrito');
+});
+
 module.exports=router; 
