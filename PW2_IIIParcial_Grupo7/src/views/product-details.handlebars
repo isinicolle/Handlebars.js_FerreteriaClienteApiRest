@@ -1,0 +1,147 @@
+<head>
+  <link href="css/detalleProd.css" rel="stylesheet" />
+</head>
+
+<header class="main-header">
+  <div class="container container--flex">
+    <div class="container__logo column column--50">
+      <h1 class="logo">Ferreteria Ferretear | Inicio</h1>
+    </div>
+    <div class="main-header__contactInfo column column--50">
+      <p class="main-header__contactInfo__telefone"><span
+          class="icon-telephone"
+        >Teléfono: +504 1234-5678</span></p>
+      <p class="main-header__contactInfo__address"><span
+          class="icon-map"
+        >Ubicación: Unicah</span></p>
+    </div>
+  </div>
+</header>
+<input value="{{req.query.idProd}}" id="idProd" hidden>
+<nav class="main-nav">
+  <div class="container container--flex">
+    <span class="icon-menu" id="btnmenu"></span>
+    <ul class="menu" id="menu">
+      <li class="menu__item"><a
+          href="/"
+          class="menu__link menu__link--select"
+        >Inicio</a></li>
+      <li class="menu__item"><a
+          href="api/nosotros"
+          class="menu__link"
+        >Nosotros</a></li>
+      <li class="menu__item"><a
+          href="api/galeria"
+          class="menu__link"
+        >Galeria</a></li>
+      <li class="menu__item"><a
+          href="api/contactanos"
+          class="menu__link"
+        >Contáctanos</a></li>
+    </ul>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" class="social-icon__link"><span
+          class="icon-facebook"
+        ></span></a>
+      <a href="https://www.instagram.com" class="social-icon__link"><span
+          class="icon-instagram"
+        ></span></a>
+      <a href="https://twitter.com/i/flow/login" class="social-icon__link"><span
+          class="icon-twitter"
+        ></span></a>
+      <a href="https://mail.google.com" class="social-icon__link"><span
+          class="icon-mail"
+        ></span></a>
+    </div>
+  </div>
+</nav>
+<section class="banner">
+  <img src="img/banner.png" alt="" class="banner__img" />
+</section>
+
+<section class="detallesProductos">
+  <div class="row" id="InfoProductos">
+     <div id="imgProd" class="imagenProducto">
+      
+    </div>
+  <div id="descripciones" class="descripciones">
+    <div id="precio">
+     
+    </div>
+    <div id="descripcion">
+
+    </div>
+    <form class="formulario">
+      <div class="cantidad">
+        <label for="txtCantidad">
+          Cantidad
+        </label>
+        <input id="txtCantidad" min="0" max="1000" onchange="onChange()" type="number" />
+      </div>
+      <input type="button" class="button" onclick="handleCarrito()" value="Agregar al carrito" />
+
+    </form>
+      <table>
+          <tbody>
+
+                      <tr>
+                          <td class="rowHeader">
+                          Categoria   
+                          </td>
+                          <td id="categoria">
+                        
+                          </td>
+                      </tr>
+                        <tr>
+                          <td class="rowHeader">
+                          Marca   
+                          </td>
+                          <td id="marca">
+                         
+                          </td>
+                      </tr>
+          </tbody>
+      </table>
+  </div>
+  </div>
+
+</section>
+<footer class="main-footer">
+  <div class="container container--flex">
+    <column class="column column--33">
+      <h2 class="column__title">¿Por qué visitarnos?</h2>
+      <p class="column__txt">
+        Somos una ferreteria que nos importa venderle calidad a nuestros
+        clientes para que puedan construir de mejor manera sus objetivos y
+        planes. Ven y crea sueños con nosotros
+      </p>
+    </column>
+    <column class="column column--33">
+      <h2 class="column__title">Contactanos</h2>
+      <p class="column__txt">Teléfono: +504 1234-5678</p>
+      <p class="column__txt">Correo: ferreteriaferretear@gmail.com</p>
+      <p class="column__txt">Ubicación: UNICAH</p>
+    </column>
+    <column class="column column--33">
+      <h2 class="column__title">Síguenos en nuestras redes sociales</h2>
+      <p class="column__txt"><a
+          href="https://www.facebook.com"
+          class="icon-facebook"
+        >Facebook</a></p>
+      <p class="column__txt"><a
+          href="https://www.instagram.com"
+          class="icon-instagram"
+        >Instagram</a></p>
+      <p class="column__txt"><a
+          href="https://twitter.com/i/flow/login"
+          class="icon-twitter"
+        >Twitter</a></p>
+      <p class="column__txt"><a
+          href="https://mail.google.com"
+          class="icon-mail"
+        >Gmail</a></p>
+    </column>
+  </div>
+</footer>
+<script src="js/fetchDetalles.js"></script>
+<script src="js/menu.js"></script>
