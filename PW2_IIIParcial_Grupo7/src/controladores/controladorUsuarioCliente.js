@@ -17,6 +17,12 @@ const validar = joi.object({
     id_cliente: joi.number().integer().required(),
     correo_usuario: joi.string().min(2).required(),
 });
+const validar2 = joi.object({
+    nombre_usuario: joi.string().min(2).required(),
+
+    id_cliente: joi.number().integer().required(),
+    correo_usuario: joi.string().min(2).required(),
+});
 const validarEstado = joi.object({
     estado: joi.boolean().required(),
 
@@ -36,6 +42,13 @@ exports.listarUsuarioCliente = async (req,res,next) =>{
         next(error);
     }
 }
+
+
+
+
+
+
+
 
 exports.buscarUsuarioCliente = async (req,res,next) =>{
     const {id_usuarioCliente} =req.query;
@@ -65,6 +78,30 @@ exports.buscarUsuarioCliente = async (req,res,next) =>{
 
 exports.ValidarAutenticado = passport.ValidarAutenticado;
 
+
+exports.verificarcontrasenia= async (req,res) =>{
+    const {id_usuarioCliente}= req.query;
+    const {contraenia_usuario_envio} = req.query;
+   
+
+    const buscarUsuarioCliente = await prisma.usuariosClientes.findFirst(
+        {
+            where:
+            {
+                id_usuarioCliente: Number(id_usuarioCliente),
+            }, 
+        })
+
+    if(bcrypt.compareSync(contraenia_usuario_envio,buscarUsuarioCliente.contraenia_usuario)){
+
+        res.send("contraseña correcta")
+    }
+    else{
+        res.send("contraseña incorrecta")
+        
+    }       
+}
+
 exports.loginUsuarioCliente = async (req,res,next) =>{
     const {correo_usuario,contraenia_usuario} =req.body;
 
@@ -80,8 +117,8 @@ exports.loginUsuarioCliente = async (req,res,next) =>{
                     where:
                     {
                         correo_usuario: correo_usuario,
-                    },// 
-                })//
+                    },
+                })
                 if(buscarUsuarioCliente!=null){
                 if(bcrypt.compareSync(contraenia_usuario,buscarUsuarioCliente.contraenia_usuario)){
                     if(buscarUsuarioCliente.estado==true){
@@ -179,6 +216,54 @@ exports.eliminarUsuariocliente= async (req,res) =>{
            
     }
 }
+exports.updateusuarioCliente= async (req,res) =>{
+    const {id_usuarioCliente} =req.query;
+    const {nombre_usuario,id_cliente,correo_usuario} = req.body;
+
+
+    if(!id_usuarioCliente)
+    {
+        res.send("Envie el id del usuario del cliente");
+    }
+    else
+    {
+        const result = await validar2.validate(req.body);
+        if(result.error)
+        {
+            res.send("ERROR! Verifique que los datos a ingresar tienen el formato correcto");
+    
+        
+            
+        }
+        else
+        {
+            try {
+                
+                const clientes = await prisma.usuariosClientes.update({
+                where:
+                {
+                      id_usuarioCliente: Number(id_usuarioCliente),
+                },
+                data: 
+                {
+                    nombre_usuario: nombre_usuario,
+                    id_cliente: id_cliente,
+                    correo_usuario: correo_usuario,
+                }
+                
+                })
+                
+                res.json(clientes);
+            } catch (error) {
+                console.log(error)
+                next(error)
+            }
+        }
+       
+    }
+}
+
+
 
 exports.actualizarCliente= async (req,res) =>{
     const {id_usuarioCliente} =req.query;
@@ -331,6 +416,11 @@ exports.recuperarContrasena = async (req, res, next)=>
     }
    
 };
+
+
+
+
+
 
 exports.actualizarClave= async (req,res) =>{
     const {id_usuarioCliente} = req.query;

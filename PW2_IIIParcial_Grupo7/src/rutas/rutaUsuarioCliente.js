@@ -5,10 +5,13 @@ const router = Router();
 //trabajando con rutas
 router.get('/listarUsuarioCliente', controladorUsuarioCliente.listarUsuarioCliente);
 router.get('/buscarUsuarioCliente', controladorUsuarioCliente.buscarUsuarioCliente);
+router.get('/verificarcontrasenia', controladorUsuarioCliente.verificarcontrasenia);
 
 router.post('/insertarUsuarioCliente', controladorUsuarioCliente.insertarUsuariocliente);
 router.delete('/eliminarUsuarioCliente', controladorUsuarioCliente.eliminarUsuariocliente);
 router.put('/actualizarUsuarioCliente', controladorUsuarioCliente.actualizarCliente);
+router.put('/updateusuarioCliente', controladorUsuarioCliente.updateusuarioCliente);
+
 
 router.put('/actualizarUsuarioEstadoCliente', controladorUsuarioCliente.actualizarEstadoCliente);
 router.put('/actualizarclave', controladorUsuarioCliente.actualizarClave);
