@@ -157,10 +157,10 @@ exports.buscarId = async (req,res,next) =>{
        data:{
            fecha:new Date(Date.now()).toISOString(),
             Clientes:{connect:{id_cliente:Cliente.Clientes.id_cliente}},
-            RTN_estado:rtn,
+            RTN_estado:true,
             ISV:.15,
             descuento:0,
-            DireccionesEnvio:{connect:{id_direccionEnvio:idDireccionEnvio}}
+            DireccionesEnvio:{connect:{id_direccionEnvio:3}}
        }}).then((data)=>{
         console.log(data);
         VentaR=data;

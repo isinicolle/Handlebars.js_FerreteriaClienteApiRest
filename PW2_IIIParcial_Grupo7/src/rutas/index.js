@@ -21,4 +21,8 @@ router.get('/carrito', (req,res)=>{
     res.render('carrito');
 });
 
+router.get('/compra', (req,res)=>{
+    res.render('compra');
+});
+
 module.exports=router; 

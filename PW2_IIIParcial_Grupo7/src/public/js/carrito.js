@@ -14,6 +14,7 @@ function subtotal(descuento,precio,cantidad) {
     let des = (descuento/100)*precio; 
     return (precio*cantidad) - des;
 }
+
 const mostrarCarrito = (data) =>{
     let body ='';
     let info =[];
@@ -55,7 +56,6 @@ const mostrarCarrito = (data) =>{
     }
     info +=`<p class="item__txt">Total: ${totalPagar[totalPagar.length - 1].toFixed(2)}</p>`
 
-
     document.getElementById('dato').innerHTML = body;
     document.getElementById('info').innerHTML = info;
 }
@@ -72,3 +72,19 @@ const handleSubtract= (data)=>{
     fetch(`http://localhost:6001/api/carrito/updateProduct/${data}/subtract`,{ method: 'PUT' });
     window.location.reload();
 }
+
+let btnComprar = document.getElementById('btnComprar');
+
+btnComprar.addEventListener('click',function (){
+    'use strict';
+    var resultado = window.confirm('Estas seguro?');
+    if (resultado === true) {
+        window.alert('Okay, si estas seguro.');
+        window.location.reload();
+        window.location.href = '/api';
+        fetch(`http://localhost:6001/api/ventas/procesarCarrito?idUsuario=56`,{ method: 'POST'});
+    } else { 
+        window.alert('Cancelar');
+        window.location.reload();
+    }
+})
