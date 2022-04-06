@@ -38,4 +38,14 @@ router.get('/recoverycontra', (req, res) => {
     res.render('recoverycontra');
 });
 
+router.get('/miperfil', (req,res)=>{
+    res.render('miperfil');
+});
+
+router.get('/buscarProducto');
+
+router.get('/carrito', (req,res)=>{
+    res.render('carrito');
+});
+
 module.exports=router; 
