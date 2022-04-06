@@ -23,7 +23,7 @@
     <span class="icon-menu" id="btnmenu"></span>
     <ul class="menu" id="menu">
       <li class="menu__item"><a
-          href=""
+          href="/"
           class="menu__link menu__link--select"
         >Inicio</a></li>
       <li class="menu__item"><a
@@ -61,8 +61,48 @@
 
 <section class="detallesProductos">
   <div class="row" id="InfoProductos">
- 
+     <div id="imgProd" class="imagenProducto">
+      
+    </div>
+  <div id="descripciones" class="descripciones">
+    <div id="precio">
+     
+    </div>
+    <div id="descripcion">
 
+    </div>
+    <form class="formulario">
+      <div class="cantidad">
+        <label for="txtCantidad">
+          Cantidad
+        </label>
+        <input id="txtCantidad" min="0" max="1000" onchange="onChange()" type="number" />
+      </div>
+      <input type="button" class="button" onclick="handleCarrito()" value="Agregar al carrito" />
+
+    </form>
+      <table>
+          <tbody>
+
+                      <tr>
+                          <td class="rowHeader">
+                          Categoria   
+                          </td>
+                          <td id="categoria">
+                        
+                          </td>
+                      </tr>
+                        <tr>
+                          <td class="rowHeader">
+                          Marca   
+                          </td>
+                          <td id="marca">
+                         
+                          </td>
+                      </tr>
+          </tbody>
+      </table>
+  </div>
   </div>
 
 </section>

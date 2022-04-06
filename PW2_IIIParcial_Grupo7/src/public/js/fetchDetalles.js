@@ -7,50 +7,39 @@ fetch('http://localhost:6001/api/productos/buscarProducto?id_producto='+document
 
 const mostrarData = (data) =>{
     console.log(data);
-    let body =`
-        <div id="imgProd" class="imagenProducto">
-      <img src="${(data.imagen.includes('http')? data.imagen:'http://192.168.100.48:6001/img/'+data.imagen)}" alt="" />
-    </div>
-  <div id="descripciones" class="descripciones">
-    <div id="">
-      Lps. ${data.precio_actual}
-    </div>
-    <div>
-      ${data.descripcion_producto}
-    </div>
-    <form class="formulario">
-      <div class="cantidad">
-        <label for="txtCantidad">
-          Cantidad
-        </label>
-        <input id="txtCantidad" type="number" />
-      </div>
-      <input type="button" class="button" value="Agregar al carrito" />
-
-    </form>
-      <table>
-          <tbody>
-
-                      <tr>
-                          <td class="rowHeader">
-                          Categoria   
-                          </td>
-                          <td>
-                         ${data.Categorias.descripcion_categoria}
-                          </td>
-                      </tr>
-                        <tr>
-                          <td class="rowHeader">
-                          Marca   
-                          </td>
-                          <td>
-                          ${data.Marcas.descripcion_marca} 
-                          </td>
-                      </tr>
-          </tbody>
-      </table>
-  </div>
-    
-    `
+    document.getElementById('imgProd').innerHTML=`
+    <img src="${(data.imagen.includes('http')? data.imagen:'http://192.168.100.48:6001/img/'+data.imagen)}" id="" alt="" />`
+    document.getElementById('precio').innerHTML=`Lps. ${data.precio_actual}`
+    document.getElementById('descripcion').innerHTML=`${data.descripcion_producto}`
+    document.getElementById('categoria').innerHTML=` ${data.Categorias.descripcion_categoria}`
+    document.getElementById('marca').innerHTML=`  ${data.Marcas.descripcion_marca} `
     document.getElementById('InfoProductos').innerHTML=body
+}
+const onChange = ()=>{
+  const textBox = document.getElementById('txtCantidad')
+  if (textBox.value<0)
+  textBox.value =0; 
+  if (textBox.value>1000)
+  textBox.value=1000
+}
+
+const  handleCarrito= async ()=>{
+
+const idProd = document.getElementById('idProd').value;
+const cantidad = document.getElementById('txtCantidad').value
+
+await fetch(
+  'http://localhost:6001/api/carrito/agregarProducto?idUsuario=56',{
+      method: 'POST',
+      headers:{
+          Accept: 'application/json',
+          'Content-Type': 'application/json'},
+       body: JSON.stringify({
+             
+             idProducto:idProd ,
+             Cantidad:Number(cantidad)
+         
+       })
+   
+      } ).then((data)=>{  console.log(data); alert('Producto agregado al carrito') });
 }
