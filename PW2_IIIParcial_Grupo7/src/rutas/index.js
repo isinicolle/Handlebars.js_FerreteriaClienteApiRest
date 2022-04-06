@@ -42,4 +42,6 @@ router.get('/miperfil', (req,res)=>{
     res.render('miperfil');
 });
 
+router.get('/buscarProducto');
+
 module.exports=router; 
