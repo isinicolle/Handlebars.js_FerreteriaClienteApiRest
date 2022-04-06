@@ -1,5 +1,5 @@
 fetch(
-  "http://192.168.0.107:6001/api/usuarioCliente/buscarUsuarioCliente?id_usuarioCliente=2"
+  "http://192.168.0.107:6001/api/usuarioCliente/buscarUsuarioCliente?id_usuarioCliente=56"
 )
   .then((res) => {
     return res.json();
@@ -15,7 +15,7 @@ const mostrarData = (data) => {
 
 function actualizar() {
   fetch(
-    "http://192.168.0.107:6001/api/usuarioCliente/buscarUsuarioCliente?id_usuarioCliente=2"
+    "http://192.168.0.107:6001/api/usuarioCliente/buscarUsuarioCliente?id_usuarioCliente=56"
   )
     .then((res) => {
       return res.json();
@@ -75,7 +75,7 @@ const actualizarcliente = (data) => {
                nueva_pasword= document.getElementById("newpass").value
 
 
-               fetch('http://192.168.0.107:6001/api/usuarioCliente/actualizarClave?id_usuarioCliente=2',
+               fetch('http://192.168.0.107:6001/api/usuarioCliente/actualizarClave?id_usuarioCliente=56',
                {
                  method: "PUT",
                  headers: {
@@ -114,7 +114,7 @@ const actualizarcliente = (data) => {
   document.getElementById("correo").disabled = true;
   document.getElementById("nombre").disabled = true
   
-  fetch('http://192.168.0.107:6001/api/usuarioCliente/updateusuarioCliente?id_usuarioCliente=2',
+  fetch('http://192.168.0.107:6001/api/usuarioCliente/updateusuarioCliente?id_usuarioCliente=56',
   {
     method: "PUT",
     headers: {
